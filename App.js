@@ -1,47 +1,23 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./HomeScreen";
+import RepetitionExercise from "./RepetitionExercise";
+import DurationExercise from "./DurationExercise";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.h1}>Hello CodeSandbox</Text>
-        <Text style={styles.h2}>
-          Start editing to see some magic happen, even on your mobile device!
-        </Text>
-        <br />
-        <br />
-        <Text style={styles.paragraph}>
-          Open Expo on your mobile device with scanning the QR code in the
-          application log under the start tab.
-        </Text>
-      </SafeAreaView>
-    );
-  }
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="RepetitionExercise"
+          component={RepetitionExercise}
+        />
+        <Stack.Screen name="DurationExercise" component={DurationExercise} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-    padding: 8,
-  },
-  paragraph: {
-    margin: 8,
-    fontSize: 16,
-    textAlign: "center",
-  },
-  h1: {
-    margin: 28,
-    fontSize: 36,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  h2: {
-    margin: 16,
-    fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-});
